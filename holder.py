@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import tkinter.messagebox
+import bcrypt
 
 objects = []
 window = Tk()
@@ -26,9 +27,9 @@ class popupWindow(object):
 
     def cleanup(self):
         self.value = self.e.get()
-        access = 'tim'
+        access = '$2a$04$ih/4edMe3TB/lJL9YoztROrRInvTJ2E3k4tzh/zN8zL8IxvBJzQDK'
 
-        if self.value == access:
+        if bcrypt.compare(self.value, access):
             self.loop = True
             self.top.destroy()
             window.deiconify()
